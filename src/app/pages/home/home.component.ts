@@ -10,6 +10,12 @@ interface Task {
   progress: number;
 }
 
+interface Task2 {
+  text: string;
+  startDate: Date;
+  endDate: Date;
+}
+
 interface Dependency {
   id: number;
   predecessorId: number;
@@ -35,6 +41,8 @@ interface ResourceAssignment {
 
 export class HomeComponent implements OnInit {
   tasks: Task[] = [];
+  tasks2: Task2[] = [];
+  currentDate = new Date();
   dependencies: Dependency[] = [];
   resources: Resource[] = [];
   resourceAssignments: ResourceAssignment[];
@@ -47,6 +55,7 @@ export class HomeComponent implements OnInit {
     this.scheduler.getSchedule().subscribe(schedule => {
       let id = 0;
       const tasks: Task[] = [];
+      const tasks2: Task2[] = [];
       const dependencies: Dependency[] = [];
       const resourceAssignments: ResourceAssignment[] = [];
       const now = Date.now();
@@ -89,12 +98,18 @@ export class HomeComponent implements OnInit {
         //   taskId: id,
         //   resourceId: 1
         // });
+
+        tasks2.push({
+          text: tasks[tasks.length - 1].title,
+          startDate: item.DateIn,
+          endDate: item.DateOut
+        });
       });
 
       this.tasks = tasks;
       this.dependencies = dependencies;
       this.resourceAssignments = resourceAssignments;
-      console.log(this.tasks);
+      this.tasks2 = tasks2;
     });
   }
 }

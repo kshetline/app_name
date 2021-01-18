@@ -10,7 +10,7 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { SchedulerService } from './repositories/scheduler.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { DxGanttModule } from 'devextreme-angular';
+import { DxGanttModule, DxSchedulerModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { DxGanttModule } from 'devextreme-angular';
     UnauthenticatedContentModule,
     AppRoutingModule,
     FontAwesomeModule,
-    DxGanttModule
+    DxGanttModule,
+    DxSchedulerModule
   ],
   providers: [AuthService, ScreenService, AppInfoService, SchedulerService],
   bootstrap: [AppComponent]

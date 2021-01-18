@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
-import { DxGanttModule } from 'devextreme-angular';
+import { DxGanttModule, DxSchedulerModule } from 'devextreme-angular';
 import { SchedulerService } from './repositories/scheduler.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -54,7 +54,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), DxDataGridModule, DxFormModule, DxGanttModule, HttpClientModule],
+  imports: [RouterModule.forRoot(routes), DxDataGridModule, DxFormModule, DxGanttModule, DxSchedulerModule, HttpClientModule],
   providers: [AuthGuardService, SchedulerService],
   exports: [RouterModule],
   declarations: [HomeComponent, ProfileComponent, TasksComponent]

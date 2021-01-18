@@ -22,5 +22,19 @@
 
       <dxo-validation [autoUpdateParentTasks]="true"></dxo-validation>
     </dx-gantt>
+
+    <br><hr><br>
+
+    <dx-scheduler
+      [dataSource]="tasks2"
+      [views]="['timelineMonth']"
+      currentView="timelineMonth"
+      [currentDate]="currentDate"
+      [firstDayOfWeek]="1"
+      [startDayHour]="0"
+      [endDayHour]="23"
+      [showAllDayPanel]="true"
+      [height]="600">
+    </dx-scheduler>
   </div>
 </div>
