@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   resourceAssignments: ResourceAssignment[];
 
   constructor(private scheduler: SchedulerService) {
-    this.resources = [{ id: 0, text: 'time' }];
+    this.resources = [{ id: 1, text: 'time' }];
   }
 
   ngOnInit() {
@@ -50,29 +50,45 @@ export class HomeComponent implements OnInit {
       const dependencies: Dependency[] = [];
       const resourceAssignments: ResourceAssignment[] = [];
       const now = Date.now();
+      let minDate = Number.MAX_SAFE_INTEGER;
+      let maxDate = Number.MIN_SAFE_INTEGER
+
+      schedule.forEach(item => {
+        minDate = Math.min(minDate, +item.DateIn);
+        maxDate = Math.max(minDate, +item.DateOut);
+      });
+
+      tasks.push({
+        id: ++id,
+        parentId: 0,
+        title: 'Schedule',
+        start: new Date(minDate),
+        end: new Date(maxDate),
+        progress: 0
+      });
 
       schedule.forEach((item, index) => {
         tasks.push({
           id: ++id,
-          parentId: 0,
+          parentId: 1,
           title: `${item.RegNo}: ${item.PlanningCategory}`,
           start: item.DateIn,
           end: item.DateOut,
           progress: 0
         });
 
-        dependencies.push({
-          id: id,
-          predecessorId: id - 1,
-          successorId: id + 1,
-          type: 0
-        });
+        // dependencies.push({
+        //   id: id,
+        //   predecessorId: id - 1,
+        //   successorId: id + 1,
+        //   type: 0
+        // });
 
-        resourceAssignments.push({
-          id: id,
-          taskId: id,
-          resourceId: 1
-        });
+        // resourceAssignments.push({
+        //   id: id,
+        //   taskId: id,
+        //   resourceId: 1
+        // });
       });
 
       this.tasks = tasks;

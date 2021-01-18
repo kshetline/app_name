@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+#gantt {
+  height: 500px;
+}
+
+.dx-treelist-headers .dx-treelist-table .dx-row > td {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.dx-gantt .dx-header-row {
+  height: 30px;
+}
+
+.dx-treelist .dx-row > td {
+  padding-bottom: 6px;
+  padding-top: 7px;
+}
