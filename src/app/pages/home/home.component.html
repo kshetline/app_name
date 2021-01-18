@@ -1,0 +1,19 @@
+<h2 class="content-block">Home</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <dx-gantt
+        [taskListWidth]="300"
+        scaleType="days"
+        height="500">
+
+      <dxo-tasks [dataSource]="tasks"></dxo-tasks>
+      <dxo-dependencies [dataSource]="dependencies"></dxo-dependencies>
+      <dxo-resources [dataSource]="resources"></dxo-resources>
+      <dxo-resource-assignments [dataSource]="resourceAssignments"></dxo-resource-assignments>
+
+      <dxi-column dataField="title" caption="RegNo" [width]="100"></dxi-column>
+      <dxi-column dataField="start" caption="Start Date" dataType="date" [width]="100"></dxi-column>
+      <dxi-column dataField="end" caption="End Date" dataType="date" [width]="100"></dxi-column>
+    </dx-gantt>
+  </div>
+</div>
